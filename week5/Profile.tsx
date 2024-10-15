@@ -1,7 +1,22 @@
 import React from 'react';
 import { Button, Text, View, Image } from 'react-native';
+import { NavigationProp, RouteProp } from '@react-navigation/native';
 
-const Profile = ({ navigation, route }) => {
+type RootStackParamList = {
+  Home: undefined;
+  Email: undefined;
+  Profile: { userName: string; userEmail: string; userPhoto: string };
+};
+
+type ProfileScreenNavigationProp = NavigationProp<RootStackParamList, 'Profile'>;
+type ProfileScreenRouteProp = RouteProp<RootStackParamList, 'Profile'>;
+
+type Props = {
+  navigation: ProfileScreenNavigationProp;
+  route: ProfileScreenRouteProp;
+};
+
+const Profile = ({ navigation, route }: Props) => {
   const { userName, userEmail, userPhoto } = route.params;
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>

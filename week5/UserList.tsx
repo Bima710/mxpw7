@@ -1,11 +1,16 @@
 import React from 'react';
 import { ScrollView, TouchableOpacity, View, Text, Image, Animated } from 'react-native';
+import { NavigationProp } from '@react-navigation/native';
 import userData from './data.json';
 import styles from './styles';
 
-const UserList = ({ navigation }) => {
+type UserListProps = {
+  navigation: NavigationProp<any>;
+};
+
+const UserList = ({ navigation }: UserListProps) => {
   return (
-    <ScrollView>
+    <ScrollView style={styles.scrollView}>
       {userData.map((user, index) => {
         const animatedValue = new Animated.Value(0);
 
@@ -43,7 +48,7 @@ const UserList = ({ navigation }) => {
                 style={styles.avatar}
               />
               <View>
-                <Text style={styles.boldText}>{user.name}</Text>
+                <Text style={styles.title}>{user.name}</Text>
                 <Text>{user.email}</Text>
               </View>
             </TouchableOpacity>

@@ -1,11 +1,25 @@
 import React from 'react';
-import { Button, View } from 'react-native';
-import UserList from './UserList'; // Adjust the path as necessary
+import { Button, Text, View } from 'react-native';
+import { NavigationProp, RouteProp } from '@react-navigation/native';
 
-const Email = ({ navigation }) => {
+type RootStackParamList = {
+  Home: undefined;
+  Email: undefined;
+  Profile: { userName: string; userEmail: string; userPhoto: string };
+};
+
+type EmailScreenNavigationProp = NavigationProp<RootStackParamList, 'Email'>;
+type EmailScreenRouteProp = RouteProp<RootStackParamList, 'Email'>;
+
+type Props = {
+  navigation: EmailScreenNavigationProp;
+  route: EmailScreenRouteProp;
+};
+
+const Email = ({ navigation }: Props) => {
   return (
-    <View style={{ flex: 1 }}>
-      <UserList navigation={navigation} />
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text>Email List Page</Text>
       <Button title="Go Home" onPress={() => navigation.navigate("Home")} />
     </View>
   );

@@ -1,9 +1,14 @@
 import React from 'react';
-import { View, Text, Button } from 'react-native';
+import { View, Text } from 'react-native';
 import UserList from './UserList'; // Adjust the path as necessary
 import styles from './styles';
+import { NavigationProp } from '@react-navigation/native';
 
-const HomeScreen = ({ navigation }) => {
+type HomeScreenProps = {
+  navigation: NavigationProp<any>;
+};
+
+const HomeScreen = ({ navigation }: HomeScreenProps) => {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>User List</Text>
